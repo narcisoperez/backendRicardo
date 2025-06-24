@@ -24,3 +24,6 @@ def login():
         return jsonify(msg="Credenciales inválidas"), 401
     token = create_access_token(identity=user.email)
     return jsonify(access_token=token), 200
+
+
+
