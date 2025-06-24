@@ -25,5 +25,12 @@ def login():
     token = create_access_token(identity=user.email)
     return jsonify(access_token=token), 200
 
+@auth_bp.route("/users", methods=["GET"])
+def list_users():
+    users = User.query.all()
+    # Serializar los usuarios a diccionarios
+    users_data = [user.to_dict() for user in users]
+    #print(users_data)
+    return jsonify(users_data), 200
 
 
